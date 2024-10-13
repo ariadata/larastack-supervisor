@@ -11,7 +11,7 @@ class SupervisorCommand extends Command
     protected $signature = 'supervisor {action?} {service?}';
     protected $description = 'Manage Larastack Supervisor processes';
 
-    public function handle()
+    public function handle():void
     {
         // Retrieve the action and service arguments
         $action = $this->argument('action');
@@ -19,37 +19,43 @@ class SupervisorCommand extends Command
 
         // If no action is provided or help is requested, show help
         if (!$action || $action === 'help') {
-            return $this->showHelp();
+            $this->showHelp();
         }
 
         // Handle the various actions
         switch ($action) {
             case 'list':
-                return $this->listProcesses();
+                $this->listProcesses();
+                return;
 
             case 'status':
-                return $this->status($service);
+                $this->status($service);
+                return;
 
             case 'start':
-                return $this->start($service);
+                $this->start($service);
+                return;
 
             case 'stop':
-                return $this->stop($service);
+                $this->stop($service);
+                return;
 
             case 'restart':
-                return $this->restart($service);
+                $this->restart($service);
+                return;
 
             default:
                 // If the action is unknown, show the help message
                 $this->error("Unknown action: $action");
-                return $this->showHelp();
+                $this->showHelp();
+                return;
         }
     }
 
     /**
      * Show help information if no arguments are provided or 'help' is requested.
      */
-    protected function showHelp()
+    protected function showHelp():void
     {
         $this->info('Usage:');
         $this->line('  php artisan supervisor list');
@@ -58,13 +64,12 @@ class SupervisorCommand extends Command
         $this->line('  php artisan supervisor stop [all|service-name]');
         $this->line('  php artisan supervisor restart [all|service-name]');
         $this->line('  php artisan supervisor help');
-        return 0;
     }
 
     /**
      * List all processes managed by Supervisor.
      */
-    protected function listProcesses()
+    protected function listProcesses():void
     {
         $processes = LarastackSupervisor::list();
         if (empty($processes)) {
