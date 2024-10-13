@@ -1,6 +1,6 @@
 {
     "name": "ariadata/larastack-supervisor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "package",
     "description": "Larastack Supervisor manager via artisan",
     "keywords": ["supervisor", "supervisord", "laravel", "artisan","larastack"],
