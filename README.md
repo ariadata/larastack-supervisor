@@ -15,36 +15,22 @@ You can install this package via Composer:
 composer require ariadata/larastack-supervisor
 ```
 
-## Configuration
+## Configuration on `.env`
 
-After installation, you can publish the configuration file to customize the Supervisor RPC settings.
-    
+After installation, need to add these in your `.env` file:
+
 ```bash
-php artisan vendor:publish --tag=larastack-supervisor-config
-```
-
-This will create a configuration file at config/larastack-supervisor.php. You can modify it to set your Supervisor RPC
-connection settings:
-    
-```php
-
-return [
-    'auth' => [
-        'rpc' => [
-            'host' => env('SUPERVISOR_RPC_HOST', 'supervisor'), // Supervisor host
-            'port' => env('SUPERVISOR_RPC_PORT', 9001), // Supervisor RPC port
-            'user' => env('SUPERVISOR_RPC_USER', 'user'), // Supervisor RPC username
-            'pass' => env('SUPERVISOR_RPC_PASS', 'pass'), // Supervisor RPC password
-        ],
-    ],
-];
+SUPERVISOR_RPC_HOST=supervisor # or your supervisor host
+SUPERVISOR_RPC_PORT=9001
+SUPERVISOR_RPC_USER=user
+SUPERVISOR_RPC_PASS=pass
 ```
 
 ## Usage
 
-You can interact with Supervisor using either the Facade or the helper function.
+You can interact with Supervisor using either the `Facade` or the `helper function`.
 
-### Using the Facade
+### Using the `Facade`
 
 Ensure you have added the alias in your config/app.php (this is automatically registered if you are using Laravel's
 auto-discovery feature , laravel <= 7.x):
@@ -155,7 +141,7 @@ The following statuses may be returned when querying the status of Supervisor-ma
 
 ## License
 
-This package is open-sourced software licensed under the MIT license.
+This package is open-sourced software licensed under the `MIT` license.
 
 ### Key Points Covered:
 
